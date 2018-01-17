@@ -29,11 +29,18 @@ type UnlockerConfig struct {
 }
 
 const minDepth = 16
-const byzantiumHardForkHeight = 4370000
-
-var homesteadReward = math.MustParseBig256("5000000000000000000")
-var byzantiumReward = math.MustParseBig256("3000000000000000000")
-
+//const byzantiumHardForkHeight = 1000001
+const babReward2Height = 8000001
+const babReward3Height = 16000001
+const babReward4Height = 24000001
+const babReward5Height = 32000001
+//var homesteadReward = math.MustParseBig256("125000000000000000000")
+//var byzantiumReward = math.MustParseBig256("100000000000000000000")
+var babReward1 = math.MustParseBig256("125000000000000000000")
+var babReward2 = math.MustParseBig256("100000000000000000000")
+var babReward3 = math.MustParseBig256("75000000000000000000")
+var babReward4 = math.MustParseBig256("50000000000000000000")
+var babReward5 = math.MustParseBig256("25000000000000000000")
 // Donate 10% from pool fees to developers
 const donationFee = 10.0
 const donationAccount = "0xb85150eb365e7df0941f0cf08235f987ba91506a"
@@ -502,10 +509,19 @@ func weiToShannonInt64(wei *big.Rat) int64 {
 }
 
 func getConstReward(height int64) *big.Int {
-	if height >= byzantiumHardForkHeight {
-		return new(big.Int).Set(byzantiumReward)
+	if height >= babReward5Height {
+		return new(big.Int).Set(babReward5)
 	}
-	return new(big.Int).Set(homesteadReward)
+	if height >= babReward4Height {
+                return new(big.Int).Set(babReward4)
+        }
+	if height >= babReward3Height {
+                return new(big.Int).Set(babReward3)
+        }
+        if height >= babReward2Height {
+                return new(big.Int).Set(babReward2)
+        }
+	return new(big.Int).Set(babReward1)
 }
 
 func getRewardForUncle(height int64) *big.Int {
