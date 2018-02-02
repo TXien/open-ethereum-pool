@@ -34,13 +34,26 @@ const babReward2Height = 8000001
 const babReward3Height = 16000001
 const babReward4Height = 24000001
 const babReward5Height = 32000001
+const babReward6Height = 40000001
+const babReward7Height = 48000001
+const babReward8Height = 56000001
+const babReward9Height = 64000001
+const babReward10Height = 72000001
+const babReward10Height = 80000001
 //var homesteadReward = math.MustParseBig256("125000000000000000000")
 //var byzantiumReward = math.MustParseBig256("100000000000000000000")
-var babReward1 = math.MustParseBig256("125000000000000000000")
-var babReward2 = math.MustParseBig256("100000000000000000000")
-var babReward3 = math.MustParseBig256("75000000000000000000")
-var babReward4 = math.MustParseBig256("50000000000000000000")
-var babReward5 = math.MustParseBig256("25000000000000000000")
+var babReward1 = math.MustParseBig256("60000000000000000000")
+var babReward2 = math.MustParseBig256("55000000000000000000")
+var babReward3 = math.MustParseBig256("50000000000000000000")
+var babReward4 = math.MustParseBig256("45000000000000000000")
+var babReward5 = math.MustParseBig256("40000000000000000000")
+var babReward6 = math.MustParseBig256("35000000000000000000")
+var babReward7 = math.MustParseBig256("30000000000000000000")
+var babReward8 = math.MustParseBig256("25000000000000000000")
+var babReward9 = math.MustParseBig256("20000000000000000000")
+var babReward10 = math.MustParseBig256("15000000000000000000")
+var babReward11 = math.MustParseBig256("0")
+
 // Donate 10% from pool fees to developers
 const donationFee = 10.0
 const donationAccount = "0xb85150eb365e7df0941f0cf08235f987ba91506a"
@@ -509,6 +522,24 @@ func weiToShannonInt64(wei *big.Rat) int64 {
 }
 
 func getConstReward(height int64) *big.Int {
+        if height >= babReward11Height {
+                return new(big.Int).Set(babReward11)
+        }
+        if height >= babReward10Height {
+                return new(big.Int).Set(babReward10)
+        }
+        if height >= babReward9Height {
+                return new(big.Int).Set(babReward9)
+        }
+        if height >= babReward8Height {
+                return new(big.Int).Set(babReward8)
+        }
+        if height >= babReward7Height {
+                return new(big.Int).Set(babReward7)
+        }
+        if height >= babReward6Height {
+                return new(big.Int).Set(babReward6)
+        }
 	if height >= babReward5Height {
 		return new(big.Int).Set(babReward5)
 	}
